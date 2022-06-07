@@ -53,6 +53,9 @@ Filters Filters::parse(std::istream& is)
 
 	Filters filters;
 	setFilterFromItem(filters.minItemCount, filter_items, "minItemCount");
+	setFilterFromItem(filters.maxItemCount, filter_items, "maxItemCount");
+	setFilterFromItem(filters.minPackageCount, filter_items, "minPackageCount");
+	setFilterFromItem(filters.maxPackageCount, filter_items, "maxPackageCount");
 	return filters;
 }
 

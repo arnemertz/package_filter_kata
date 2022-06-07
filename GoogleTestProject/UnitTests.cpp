@@ -52,4 +52,10 @@ R"(R"(filters: {
     const auto filters = Filters::parse(sstr);
     ASSERT_TRUE(filters.minItemCount);
     ASSERT_EQ(filters.minItemCount, 2);
+    ASSERT_TRUE(filters.maxItemCount);
+    ASSERT_EQ(filters.maxItemCount, 50);
+    ASSERT_TRUE(filters.minPackageCount);
+    ASSERT_EQ(filters.minPackageCount, 1);
+    ASSERT_TRUE(filters.maxPackageCount);
+    ASSERT_EQ(filters.maxPackageCount, 50);
 }
