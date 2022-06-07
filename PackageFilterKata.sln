@@ -5,9 +5,14 @@ VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GoogleTestProject", "GoogleTestProject\GoogleTestProject.vcxproj", "{EAAEB9DB-F93E-49FA-BB86-D5598B6A6FCD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppKata", "CppKata\CppKata.vcxproj", "{E1D91B65-F8F3-4A54-8263-0384A4AA09E1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PackageFilterKata", "CppKata\CppKata.vcxproj", "{E1D91B65-F8F3-4A54-8263-0384A4AA09E1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KataMain", "KataMain\KataMain.vcxproj", "{2CD186F8-EF62-4510-99CD-0962CEC91AA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{511A4A59-1789-428D-B96A-2A38961AA75D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E1D91B65-F8F3-4A54-8263-0384A4AA09E1}</ProjectGuid>
     <RootNamespace>CppKata</RootNamespace>
-    <ProjectName>CppKata</ProjectName>
+    <ProjectName>PackageFilterKata</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
