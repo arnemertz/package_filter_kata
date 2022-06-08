@@ -12,31 +12,25 @@ std::string process(std::istream& is) {
     const auto filters = Filters::parse(is);
     const auto packages = Package::parse(is);
 
-    std::vector<Package> filteredPackages;
-    std::copy_if(
-        packages.begin(), 
-        packages.end(), 
-        std::back_inserter(filteredPackages), 
-        filters.predicate()
-    );
+    struct Results
+    {
+        unsigned totalPackageCount = 0u;
+        unsigned totalItemCount = 0u;
+    };
 
-    const auto totalPackageCount = std::accumulate(
-        filteredPackages.begin(),
-        filteredPackages.end(),
-        0u,
-        [](unsigned count, Package const& package)
-		{
-			return count + package.packageCount;
-		}
-    );
-    const auto totalItemCount = std::accumulate(
-        filteredPackages.begin(),
-        filteredPackages.end(),
-        0u,
-        [](unsigned count, Package const& package)
-		{
-    		return count + (package.itemCount * package.packageCount);
-		}
+    const auto [totalPackageCount, totalItemCount] = std::accumulate(
+        begin(packages),
+        end(packages),
+        Results{},
+        [valid = filters.predicate()](auto results, auto const& package)
+        {
+	        if (valid(package))
+	        {
+		        results.totalPackageCount += package.packageCount;
+                results.totalItemCount += package.packageCount * package.itemCount;
+	        }
+            return results;
+        }
     );
 
 	std::stringstream result;
