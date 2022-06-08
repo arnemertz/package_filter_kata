@@ -83,3 +83,20 @@ R"(packages: [
     EXPECT_EQ(packages[3].itemCount, 1);
     EXPECT_EQ(packages[3].packageCount, 1);
 }
+
+TEST(package_filter, apply_package_filter)
+{
+    Filters filters{};
+    filters.maxItemCount = 4;
+    filters.minPackageCount = 3;
+
+    const auto filter_predicate = filters.predicate();
+    const Package within_limits{ 3, 6 };
+    EXPECT_TRUE(filter_predicate(within_limits));
+
+    const Package too_many_items{ 5000, 6 };
+    EXPECT_FALSE(filter_predicate(too_many_items));
+
+    const Package not_enough_packages{ 3, 2 };
+    EXPECT_FALSE(filter_predicate(not_enough_packages));
+}
