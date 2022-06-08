@@ -2,13 +2,14 @@
 
 #include <istream>
 
+#include "Filters.hpp"
+#include "Package.hpp"
+
 std::string process(std::istream& is) {
+    const auto filters = Filters::parse(is);
+    const auto packages = Package::parse(is);
+
     std::string result;
-    std::string line;
-    while (std::getline(is, line) && !line.empty())
-    {
-        result.push_back(line[0]);
-    }
     return result;
 }
 

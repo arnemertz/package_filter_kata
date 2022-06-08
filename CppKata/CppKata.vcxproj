@@ -84,10 +84,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Filters.hpp" />
+    <ClInclude Include="Package.hpp" />
     <ClInclude Include="process.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Filters.cpp" />
+    <ClCompile Include="Package.cpp" />
     <ClCompile Include="process.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

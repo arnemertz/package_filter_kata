@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "../CppKata/process.hpp"
 #include "../CppKata/Filters.hpp"
+#include "../CppKata/Package.hpp"
 
 #include <string>
 #include <sstream>
@@ -40,7 +41,7 @@ R"(totalItemCount: 73, totalPackageCount: 15, totalWeight: "38000g")"s;
 TEST(package_filter, parse_filters_parses_counts)
 {
     const auto filter_string =
-R"(R"(filters: {
+R"(filters: {
     minItemCount: 2,
     maxItemCount: 50,
     minPackageCount: 1,
@@ -58,4 +59,27 @@ R"(R"(filters: {
     ASSERT_EQ(filters.minPackageCount, 1);
     ASSERT_TRUE(filters.maxPackageCount);
     ASSERT_EQ(filters.maxPackageCount, 50);
+}
+
+TEST(package_filter, parse_packages)
+{
+    const auto packages_string =
+R"(packages: [
+    {itemName: "screwDriver", itemWeight: "400g", itemCount: 5, packageCount: 12},
+    {itemName: "powerDrill", itemWeight: "2500g", packageCount: 5},
+    {itemName: "screw", itemCount: 500, packageCount: 10, packageWeight: "500g"},
+    {itemID: "DA456-32F", packageWeight: "4000g", itemWeight: "800g"},
+    {itemWeight: "800g", itemCount: 6, packageWeight: "5kg", packageCount: 2, itemID: "FIA-77-g64x"},
+    {itemCount: 20, itemName: "gummy bears", packageCount: 50},
+    {itemCount: 10, itemWeight: "2300g", itemName: "powerDrill", powerUse="1400W"}
+]
+)";
+
+    std::stringstream sstr{ packages_string };
+    const auto packages = Package::parse(sstr);
+    ASSERT_EQ(packages.size(), 7);
+    EXPECT_EQ(packages[0].itemCount, 5);
+    EXPECT_EQ(packages[0].packageCount, 12);
+    EXPECT_EQ(packages[3].itemCount, 1);
+    EXPECT_EQ(packages[3].packageCount, 1);
 }
