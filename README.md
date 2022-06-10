@@ -46,3 +46,10 @@ In the above example, the following packages do not satisfy the filter criteria:
 
 The output for above example would be: `totalItemCount: 73, totalPackageCount: 15, totalWeight: "38000g"`
 (12 packages á 5 screw drivers, 1 package with a DA456-32F, 2 packages á 6 "FIA-77g64x")
+
+**Hints:** 
+- consider using regular expressions and standard library algorithms
+- assume the input format to be exactly as the example above, i.e. one filter attrubte per line, one package per line, etc.
+- leave the process function signature as it is, i.e. assume the input is read via a `std::istream`
+- find names of "domain objects" and actions on those objects to model types and functions, try to implement and test them separately
+- for a first end-to-end implementation, start by considering only the counts, i.e. ignore minimum/maximum weights (note that the gummy bears package is no longer invalid in that scenario). The output for the example input would then be `totalItemCount: 1082, totalPackageCount: 65`
